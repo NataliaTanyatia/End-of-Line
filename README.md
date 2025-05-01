@@ -87,6 +87,6 @@ This bridges the mathematical violence to political implications—framing heuri
 
 ---
 
-## **(https://cloud.google.com/learn/what-is-a-virtual-private-server) - [#VPS]  free method for running this trading robot  with pre-installed (https://drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq) - [sMetaTrader] for Microsoft Windows OS, but on Android  using (https://exagear.net/) - [#ExaGear] / https://github.com/akbarri/ExaGear-SU , connecting to an exchange/broker like (https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses) - [#FXTM]:**
+## **(https://cloud.google.com/learn/what-is-a-virtual-private-server)-[#VPS] free method for running this trading robot with pre-installed (https://drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq)-[sMetaTrader] for Microsoft Windows OS, but on Android using (https://exagear.net/)-[#ExaGear] / https://github.com/akbarri/ExaGear-SU , connecting to an exchange/broker like (https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses) - [#FXTM]:**
 
 ---
