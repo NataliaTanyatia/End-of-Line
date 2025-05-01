@@ -87,13 +87,11 @@ This bridges the mathematical violence to political implications—framing heuri
 
 ---
 
-## **Free Method for Running this Trading Robot on Android**
+## **(#VPS) free method for running this trading robot with pre-installed (#sMetaTrader) for Microsoft Windows OS, but on Android using (#ExaGear) / [ExaGear-SU](https://github.com/akbarri/ExaGear-SU), connecting to an exchange/broker like (#FXTM):**
 
-A guide to run the trading robot with pre-installed MetaTrader for Windows OS on Android using:
-
-- **[VPS (Virtual Private Server)](https://cloud.google.com/learn/what-is-a-virtual-private-server)**  
-- **[ExaGear](https://exagear.net/) / [ExaGear-SU](https://github.com/akbarri/ExaGear-SU)** (Windows emulator for Android)  
-- **[MetaTrader Installation Files](https://drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq)**  
-- Broker Connection (Example: **[FXTM Server Addresses](https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses)**)
+- What is a VPS? → [cloud.google.com/learn/what-is-a-virtual-private-server](https://cloud.google.com/learn/what-is-a-virtual-private-server)  
+- MetaTrader files → [drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq](https://drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq)  
+- FXTM servers → [fxtmhelpcenter.zendesk.com](https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses)  
+- ExaGear → [exagear.net](https://exagear.net)
 
 ---
