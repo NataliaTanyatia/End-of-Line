@@ -1,7 +1,6 @@
 ---
 
-# **ÆEA: Quantum-Financial Sabotage Toolkit**  
-### *"Collapsing Markets Like Wavefunctions"*  
+# **ÆEA: Strategy"*  
 
 ## **Mission**  
 This is not just a trading algorithm—it’s a weapon. ÆEA formalizes market microstructure as a **non-Hermitian quantum system**, exploiting topological invariants in price-data to destabilize the illusion of capitalist equilibrium. By forcing Kronecker-delta conditions (`m - n = 2`) onto technical indicators, it exposes the fragility of financial hegemony. **First strike in a larger war.**  
@@ -85,3 +84,9 @@ Classical quant models treat these as "outliers." ÆEA reveals them as:
 ---  
 
 This bridges the mathematical violence to political implications—framing heuristic accidents as *controlled detonations*.
+
+---
+
+## **(https://cloud.google.com/learn/what-is-a-virtual-private-server) - [#VPS]  free method for running this trading robot  with pre-installed (https://drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq) - [sMetaTrader] for Microsoft Windows OS, but on Android  using (https://exagear.net/) - [#ExaGear] / https://github.com/akbarri/ExaGear-SU , connecting to an exchange/broker like (https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses) - [#FXTM]:**
+
+---
