@@ -89,9 +89,9 @@ This bridges the mathematical violence to political implications—framing heuri
 
 ## **(#VPS) free method for running this trading robot with pre-installed (#MetaTrader) for Microsoft Windows OS, but on Android using (#ExaGear) / [ExaGear-SU](https://github.com/akbarri/ExaGear-SU), connecting to an exchange/broker like (#FXTM):**
 
-(#[#VPS) =[https://cloud.google.com/learn/what-is-a-virtual-private-server]
-{#sMetaTrader) -[https://drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq]
-(#ExaGear) -[https://exagear.net/] / https://github.com/ajay9634/EXAGEAR-XEGW/releases
-[#FXTM]: https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses
+(#[#VPS)[https://cloud.google.com/learn/what-is-a-virtual-private-server]
+{#sMetaTrader)[https://drive.google.com/drive/folders/1rvHBtpO6TnBjv3Aa1z7slqiHsuvtlUTq]
+(#ExaGear)[https://exagear.net/] / https://github.com/ajay9634/EXAGEAR-XEGW/releases
+(#FXTM£)[https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses]
 
 ---
