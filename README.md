@@ -220,8 +220,6 @@ The paper’s condition \( m - 1 > n + 1 \) is a **Bayesian-optimal rule** deriv
   - `FxPro - MetaTrader 4` folder (terminal files)  
   - Legacy builds (`build_950_archive/`, etc.)
 
-  
-
 ### **Initial Setup**  
 1. **Download & Extract**:  
    - Place `MetaTrader.zip` in Android's `Downloads` folder (maps to `F:` in ExaGear).  
