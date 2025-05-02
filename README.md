@@ -103,3 +103,11 @@ This bridges the mathematical violence to political implications—framing heuri
 - [FXTM Server Addresses](https://fxtmhelpcenter.zendesk.com/hc/en-gb/articles/14939588094620-What-are-your-live-or-practice-server-addresses)
 
 ---
+
+Peer Revied:(as much as it's probably going to get for someone with no institutional affiliation or endorsment)
+On the Nature of Logic and the P vs NP Problem: https://osf.io/preprints/osf/4dzxp_v1
+
+Mirrors:
+
+https://vixra.org/abs/2505.0002
+https://www.academia.edu/129140324/A_Quantum_Financial_Topology_of_Supply_Demand_Imbalance_via_Non_Hermitian_Stochastic_Geometry
