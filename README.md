@@ -212,7 +212,7 @@ The paper’s condition \( m - 1 > n + 1 \) is a **Bayesian-optimal rule** deriv
 
 ---
 
-Installed CRACK](Screenshot_20250501_231713_com_hihonor_android_launcher_NewSimpleLauncher.jpg)
+![Installed CRACK](Screenshot_20250501_231713_com_hihonor_android_launcher_NewSimpleLauncher.jpg)
 ![Extract](Screenshot_20250501_231455_com_hihonor_filemanager_StorageActivity.jpg)
 ![Downloads=F:](Screenshot_20250501_231518_com_hihonor_filemanager_StorageActivity.jpg)
 ![From inside ExaGear](Screenshot_20250501_232200_com_ludashi_benchmarl_MainActivity.jpg)
