@@ -235,9 +235,9 @@ The paper’s condition \( m - 1 > n + 1 \) is a **Bayesian-optimal rule** deriv
 
 ---
 
-## **Installation Process**  
+### **Installation Process**  
 
-### **Main MT4 Installation**  
+#### **Main MT4 Installation**  
 1. In ExaGear:  
    - Navigate to `F:\MetaTrader\mt4setup.exe`  
    - Double-click to run the installer  
@@ -245,7 +245,7 @@ The paper’s condition \( m - 1 > n + 1 \) is a **Bayesian-optimal rule** deriv
    - Install to default location (`C:\Program Files\MetaTrader 4`)  
    - *This provides the official `metaeditor.exe`*  
 
-### **FxPro Terminal Setup**  
+#### **FxPro Terminal Setup**  
 1. In ExaGear File Explorer:  
    - Go to `F:\MetaTrader\FxPro - MetaTrader 4`  
    - **Select ALL files/folders** → Right-click → Copy  
@@ -256,28 +256,27 @@ The paper’s condition \( m - 1 > n + 1 \) is a **Bayesian-optimal rule** deriv
 
 ---
 
-
-## **File Replacements**  
+### **File Replacements**  
 *Use these when files fail to launch or crash:*  
 
-### **Terminal.exe Issues**  
+#### **Terminal.exe Issues**  
 1. Navigate to:  
    - `F:\MetaTrader\build_950_archive\Terminal.exe` (stable version)  
 2. Copy and overwrite:  
    - `C:\Program Files\FxPro - MetaTrader 4\Terminal.exe`  
 
-### **MetaEditor Issues**  
+#### **MetaEditor Issues**  
 1. Find working version in:  
    - `F:\MetaTrader\legacy_builds\MetaEditor.exe`  
 2. Replace:  
    - `C:\Program Files\MetaTrader 4\metaeditor.exe`  
 
-## **Configuration**  
-### **1. Terminal Setup**  
+### **Configuration**  
+#### **1. Terminal Setup**  
 - Launch `C:\Program Files\FxPro - MetaTrader 4\terminal.exe`.  
 - Log in with credentials.  
 
-### **2. Critical Optimizations**  
+#### **2. Critical Optimizations**  
 Go to `Tools > Options`:  
 | Tab | Setting | Action |  
 |-----|---------|--------|  
@@ -294,7 +293,7 @@ Replace unstable executables with files from:
 
 ---
 
-## **Troubleshooting**  
+### **Troubleshooting**  
 | Issue | Fix |  
 |-------|-----|  
 | Terminal crashes | Run as Admin; use legacy `Terminal.exe`. |  
@@ -303,7 +302,7 @@ Replace unstable executables with files from:
 
 ---
 
-## **FAQs**  
+### **FAQs**  
 **Q: Can I use EAs/indicators?**  
 A: Yes, but avoid CPU-heavy scripts.  
 
