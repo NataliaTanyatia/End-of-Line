@@ -212,6 +212,21 @@ The paper’s condition \( m - 1 > n + 1 \) is a **Bayesian-optimal rule** deriv
 
 ---
 
+Installed CRACK](Screenshot_20250501_231713_com_hihonor_android_launcher_NewSimpleLauncher.jpg)
+![Extract](Screenshot_20250501_231455_com_hihonor_filemanager_StorageActivity.jpg)
+![Downloads=F:](Screenshot_20250501_231518_com_hihonor_filemanager_StorageActivity.jpg)
+![From inside ExaGear](Screenshot_20250501_232200_com_ludashi_benchmarl_MainActivity.jpg)
+![Program Files](Screenshot_20250501_232217_com_ludashi_benchmarl_MainActivity.jpg)
+![Run](Screenshot_20250501_232302_com_ludashi_benchmarl_MainActivity.jpg)
+![MT4](Screenshot_20250501_232951_com_ludashi_benchmarl_MainActivity.jpg)
+![Tools>Options](Screenshot_20250501_233017_com_ludashi_benchmarl_MainActivity.jpg)
+![Max eficiency's - Min Latency - Zero Lagging](Screenshot_20250501_233111_com_ludashi_benchmarl_MainActivity.jpg)
+![Disable aNews](Screenshot_20250501_233123_com_ludashi_benchmarl_MainActivity.jpg)
+![Chart Bars in history and visibility](Screenshot_20250501_233227_com_ludashi_benchmarl_MainActivity.jpg)
+![240](Screenshot_20250501_233253_com_ludashi_benchmarl_MainActivity.jpg)
+
+---
+
 ### **Prerequisites**  
 - Android device (ARMv7/ARM64, 5.0+)  
 - [ExaGear Windows Emulator](https://exagear.en.uptodown.com/android) (CRACKED/Paid version recommended)  
@@ -314,7 +329,7 @@ A: Only if you need Windows-only features (e.g., custom DLLs).
 
 ---
 
-**📌 Pro Tip**: Restart ExaGear weekly to clear memory leaks.  
+**📌 Pro Tip**: Stop ExaGear each market session close, and restart at market open to clear memory leaks and avoid losses caused by broker off times during actual open markets.  
 
 ---
 
