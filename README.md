@@ -195,6 +195,132 @@ The paper’s condition \( m - 1 > n + 1 \) is a **Bayesian-optimal rule** deriv
 
 ---
 
+## **MetaTrader 4 on ExaGear - Complete Setup Guide**  
+*Run any broker's MT4 on Android using ExaGear with FxPro's stable build.*  
+
+### **Table of Contents**  
+1. [Prerequisites](#prerequisites)  
+2. [Initial Setup](#initial-setup)  
+3. [Installation Process](#installation-process)  
+   - [Main MT4 Installation](#main-mt4-installation)  
+   - [FxPro Terminal Setup](#fxpro-terminal-setup)  
+4. [File Replacements](#file-replacements)  
+5. [Running MT4](#running-mt4)  
+6. [Optimization](#optimization)  
+7. [Troubleshooting](#troubleshooting)  
+8. [FAQs](#faqs)  
+
+---
+
+### **Prerequisites**  
+- Android device (ARMv7/ARM64, 5.0+)  
+- [ExaGear Windows Emulator](https://exagear.en.uptodown.com/android) (CRACKED/Paid version recommended)  
+- `MetaTrader.zip` containing:  
+  - `mt4setup.exe` (official MT4 installer)  
+  - `FxPro - MetaTrader 4` folder (terminal files)  
+  - Legacy builds (`build_950_archive/`, etc.)
+
+  
+
+### **Initial Setup**  
+1. **Download & Extract**:  
+   - Place `MetaTrader.zip` in Android's `Downloads` folder (maps to `F:` in ExaGear).  
+   - Extract it using ZArchiver/RAR:  
+     ```bash  
+     Destination: /sdcard/Download/MetaTrader/  
+     ```  
+   - *Now visible in ExaGear as `F:/MetaTrader/`*.  
+
+2. **Launch ExaGear**:  
+   - Grant storage permissions.  
+   - Complete Wine initialization (first-run setup).  
+
+---
+
+## **Installation Process**  
+
+### **Main MT4 Installation**  
+1. In ExaGear:  
+   - Navigate to `F:\MetaTrader\mt4setup.exe`  
+   - Double-click to run the installer  
+2. Follow prompts:  
+   - Install to default location (`C:\Program Files\MetaTrader 4`)  
+   - *This provides the official `metaeditor.exe`*  
+
+### **FxPro Terminal Setup**  
+1. In ExaGear File Explorer:  
+   - Go to `F:\MetaTrader\FxPro - MetaTrader 4`  
+   - **Select ALL files/folders** → Right-click → Copy  
+2. Paste into:  
+   - `C:\Program Files\`  
+   - Overwrite if prompted  
+   - *This deploys the working `terminal.exe`*  
+
+---
+
+
+## **File Replacements**  
+*Use these when files fail to launch or crash:*  
+
+### **Terminal.exe Issues**  
+1. Navigate to:  
+   - `F:\MetaTrader\build_950_archive\Terminal.exe` (stable version)  
+2. Copy and overwrite:  
+   - `C:\Program Files\FxPro - MetaTrader 4\Terminal.exe`  
+
+### **MetaEditor Issues**  
+1. Find working version in:  
+   - `F:\MetaTrader\legacy_builds\MetaEditor.exe`  
+2. Replace:  
+   - `C:\Program Files\MetaTrader 4\metaeditor.exe`  
+
+## **Configuration**  
+### **1. Terminal Setup**  
+- Launch `C:\Program Files\FxPro - MetaTrader 4\terminal.exe`.  
+- Log in with credentials.  
+
+### **2. Critical Optimizations**  
+Go to `Tools > Options`:  
+| Tab | Setting | Action |  
+|-----|---------|--------|  
+| **General** | `Enable news` | ❌ Uncheck |  
+| **Charts** | `Max bars` | Set to `240` |  
+| **Server** | Proxy/DDE | ❌ Disable |  
+
+---
+
+### **Legacy Builds (Stability)**  
+Replace unstable executables with files from:  
+- `build_950_archive/Terminal.exe` → Overwrite in FxPro folder.  
+- `MetaTrader 4/metaeditor.exe` → Overwrite in Program Files.  
+
+---
+
+## **Troubleshooting**  
+| Issue | Fix |  
+|-------|-----|  
+| Terminal crashes | Run as Admin; use legacy `Terminal.exe`. |  
+| High CPU | Reduce charts/indicators; disable auto-scroll. |  
+| Login errors | Switch servers in `File > Login`. |  
+
+---
+
+## **FAQs**  
+**Q: Can I use EAs/indicators?**  
+A: Yes, but avoid CPU-heavy scripts.  
+
+**Q: How to update MT4?**  
+A: Manually replace files from broker’s latest build.  
+
+**Q: Better than official MT4 Android app?**  
+A: Only if you need Windows-only features (e.g., custom DLLs).  
+
+---
+
+**📌 Pro Tip**: Restart ExaGear weekly to clear memory leaks.  
+
+---
+
 Peer Revied:(as much as it's probably going to get for someone with no institutional affiliation or endorsment)
 On the Nature of Logic and the P vs NP Problem: https://osf.io/preprints/osf/4dzxp_v1
 
