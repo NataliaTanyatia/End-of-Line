@@ -731,7 +731,7 @@ void OnGoe()
     {
     if(((h==io)&&(z>o))||((h==iO)&&(Z>O))||((h==iz)&&(Z>z))||((h==iZ)&&(Z<z)))
         {
-        if(((C==true)&&(c==true))||((C==false)&&(c==false)))
+        if(c==true)
             {
             if((B==true)&&(u==false))
                 {
@@ -748,7 +748,7 @@ void OnGoe()
         }
     else if(((h==io)||(h==iZ)||(h==iz)||(h==iO)))
         {
-        if(((C==true)&&(c==true))||((C==false)&&(c==false)))
+        if(c==true)
             {
             if((A==true)&&(v==false))
                 {
@@ -768,7 +768,7 @@ void OnToe()
     {
     if(((h==io)&&(w>o))||((h==iO)&&(W>O))||((h==iw)&&(W>w))||((h==iW)&&(W<w)))
         {
-        if(((C==true)&&(c==true))||((C==false)&&(c==false)))
+        if(c==true)
             {
             if((A==true)&&(v==false))
                 {
@@ -785,7 +785,7 @@ void OnToe()
         }
     else if(((h==io)||(h==iW)||(h==iw)||(h==iO)))
         {
-        if(((C==true)&&(c==true))||((C==false)&&(c==false)))
+        if(c==true)
             {
             if((B==true)&&(u==false))
                 {
