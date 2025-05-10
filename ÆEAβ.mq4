@@ -474,10 +474,10 @@ void T()
             a=OrderModify(Sell,D,D-com,sTP,0,CLR_NONE); K=true;
             }
         }
-    if((E!=0)&&(price>=E)) B=true;
-    else if((E!=0)&&(price<E)) B=false;
-    if((D!=0)&&(price<=D)) A=true;
-    else if((D!=0)&&(price>D)) A=false;
+    if((E!=0)&&(price>=E+com)) B=true;
+    else if((E!=0)&&(price<E+com)) B=false;
+    if((D!=0)&&(price<=D-com)) A=true;
+    else if((D!=0)&&(price>D-com)) A=false;
     }
 bool c=true;
 bool C=true;
@@ -731,7 +731,7 @@ void OnGoe()
     {
     if(((h==io)&&(z>o))||((h==iO)&&(Z>O))||((h==iz)&&(Z>z))||((h==iZ)&&(Z<z)))
         {
-        if(c==true)
+        if(c==false)
             {
             if((B==true)&&(u==false))
                 {
@@ -748,7 +748,7 @@ void OnGoe()
         }
     else if(((h==io)||(h==iZ)||(h==iz)||(h==iO)))
         {
-        if(c==true)
+        if(c==false)
             {
             if((A==true)&&(v==false))
                 {
@@ -768,7 +768,7 @@ void OnToe()
     {
     if(((h==io)&&(w>o))||((h==iO)&&(W>O))||((h==iw)&&(W>w))||((h==iW)&&(W<w)))
         {
-        if(c==true)
+        if(c==false)
             {
             if((A==true)&&(v==false))
                 {
@@ -785,7 +785,7 @@ void OnToe()
         }
     else if(((h==io)||(h==iW)||(h==iw)||(h==iO)))
         {
-        if(c==true)
+        if(c==false)
             {
             if((B==true)&&(u==false))
                 {
