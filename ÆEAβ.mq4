@@ -677,11 +677,11 @@ void OnBar()
         if(HH[O-(y+1)]>Premium[O-(y+1)])
             {
             h=O;
-            if((A==true)&&(u==true)&&(c==true))
+            if((A==true)&&(u==true)&&(c==false))
                 {
                 B(); if(C==false){Q();} else{P();} Alert("Buy:","O:",O,"|",C,":",c);
                 }
-            else if((B==true)&&(v==true)&&(c==false))
+            else if((B==true)&&(v==true)&&(c==true))
                 {
                 A(); if(C==false){P();} else{Q();} G(); Alert("Sell:","O:",O,"|",C,":",c);
                 }
@@ -689,11 +689,11 @@ void OnBar()
         if(LL[O-(y+1)]<Discount[O-(y+1)])
             {
             h=O;
-            if((B==true)&&(v==true)&&(c==true))
+            if((B==true)&&(v==true)&&(c==false))
                 {
                 A(); if(C==false){P();} else{Q();} Alert("Sell:","O:",O,"|",C,":",c);
                 }
-            else if((A==true)&&(u==true)&&(c==false))
+            else if((A==true)&&(u==true)&&(c==true))
                 {
                 B(); if(C==false){Q();} else{P();} G(); Alert("Buy:","O:",O,"|",C,":",c);
                 }
@@ -731,7 +731,7 @@ void OnGoe()
     {
     if(((h==io)&&(z>o))||((h==iO)&&(Z>O))||((h==iz)&&(Z>z))||((h==iZ)&&(Z<z)))
         {
-        if(c==false)
+        if((C==false)||(c==false))
             {
             if((B==true)&&(u==false))
                 {
@@ -748,7 +748,7 @@ void OnGoe()
         }
     else if(((h==io)||(h==iZ)||(h==iz)||(h==iO)))
         {
-        if(c==false)
+        if((C==false)||(c==false))
             {
             if((A==true)&&(v==false))
                 {
@@ -768,7 +768,7 @@ void OnToe()
     {
     if(((h==io)&&(w>o))||((h==iO)&&(W>O))||((h==iw)&&(W>w))||((h==iW)&&(W<w)))
         {
-        if(c==false)
+        if((C==false)||(c==false))
             {
             if((A==true)&&(v==false))
                 {
@@ -785,7 +785,7 @@ void OnToe()
         }
     else if(((h==io)||(h==iW)||(h==iw)||(h==iO)))
         {
-        if(c==false)
+        if((C==false)||(c==false))
             {
             if((B==true)&&(u==false))
                 {
