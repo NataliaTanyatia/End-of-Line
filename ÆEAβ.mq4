@@ -374,8 +374,8 @@ void F()
     LL[j-(y+1)]=iL;
     Premium[j-(y+1)]=iH;
     Discount[j-(y+1)]=iL;
-    ArrayResize(kA,13*(x-y));
-    ArrayResize(lA,13*(x-y));
+    ArrayResize(kA,13*(S-Y));
+    ArrayResize(lA,13*(S-Y));
     for(int i=0;i<13; i++)
         {
         kA[i*(S-Y)+(j-(Y+1))]=cA[i*(S-Y)+(j-(Y+1))];
