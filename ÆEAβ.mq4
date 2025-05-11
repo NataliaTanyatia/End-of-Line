@@ -474,10 +474,10 @@ void T()
             a=OrderModify(Sell,D,D-com,sTP,0,CLR_NONE); K=true;
             }
         }
-    if((E!=0)&&(price>=E+com)) B=true;
-    else if((E!=0)&&(price<E+com)) B=false;
-    if((D!=0)&&(price<=D-com)) A=true;
-    else if((D!=0)&&(price>D-com)) A=false;
+    if((E!=0)&&(price>=E/*+com*/)) B=true;
+    else if((E!=0)&&(price<E/*+com*/)) B=false;
+    if((D!=0)&&(price<=D/*-com*/)) A=true;
+    else if((D!=0)&&(price>D/*-com*/)) A=false;
     }
 bool c=true;
 bool C=true;
@@ -549,21 +549,12 @@ void Q()
     }
 void H(){M(); if(m>=12) k[j-(y+1)]=true; else{k[j-(y+1)]=false;} m=0;}
 void L(){N(); if(n>=12) l[j-(y+1)]=true; else{l[j-(y+1)]=false;} n=0;}
-static double P;
-static double Q;
-bool U=true;
-bool V=false;
 void J()
     {
-    if(I==iZ){J=iW; U=V;}
-    else if(I==iW){J=iZ; U=V;}
+    if(I==iZ){J=iW;}
+    else if(I==iW){J=iZ;}
     if(iI==iz) iJ=iw;
     else if(iI==iw) iJ=iz;
-    if(J==2)
-        {
-        if((P!=0)&&(Q==0)&&(U!=V)){Q=price; SL=MathAbs(P-Q)+Point;}
-        else if((P==0)&&(Q==0)&&(U!=V)) P=price;
-        }
     }
 void O(int inp,int inp0,int inp1,bool inp2)
     {
@@ -597,8 +588,8 @@ void OnPoint()
         else if(OnFire(j,"sTrend","tTrend")) Regime[j-(y+1)]="sTrend";
         }
     }
-bool iC=true;
-bool jC=true;
+//bool iC=true;
+//bool jC=true;
 static int Z=y+1;
 static int z=y+1;
 static int O=x-1;
@@ -619,19 +610,15 @@ void OnCall()
         Normalize();
         if((Suply<=price)||(iSuply<=price)||(iSuply<=iH))
             {
-            if((iZ!=iW)&&(J!=iZ)&&(U==V)) U=!V;
-            int i=j; I=iW; iZ=i; Z=i; iC=C; U=!V;
-            if((iZ==iW)&&(iZ==y+1)&&(U==V)) U=!V;
-            if((iw!=0)&&(jC==true)) h=I;
+            int i=j; I=iW; iZ=i; Z=i; //iC=C;
+            //if((iw!=0)&&(jC==true)) h=I;
             if(OnHold(j,"sTrend","tTrend")){iz=i; z=i; iI=iw; H();}
             if(X!=x-1) X++;
             }
         if((Demand>=price)||(iDemand>=price)||(iDemand>=iL))
             {
-            if((iW!=iZ)&&(J!=iW)&&(U==V)) U=!V;
-            int i=j; I=iZ; iW=i; W=i; jC=C; U=!V;
-            if((iW==iZ)&&(iW==y+1)&&(U==V)) U=!V;
-            if((iz!=0)&&(iC==true)) h=I;
+            int i=j; I=iZ; iW=i; W=i; //jC=C;
+            //if((iz!=0)&&(iC==true)) h=I;
             if(OnHold(j,"sTrend","tTrend")){iw=i; w=i; iI=iz; L();}
             if(X!=x-1) X++;
             }
@@ -704,11 +691,11 @@ void OnBar()
         if(HH[o-(y+1)]>Premium[o-(y+1)])
             {
             h=o;
-            if((A==true)&&(u==true)&&(c==true))
+            if((A==true)&&(u==true)&&(C==false)&&(c==false))
                 {
                 B(); if(C==false){Q();} else{P();} Alert("Buy:","o:",o,"|",C,":",c);
                 }
-            else if((B==true)&&(v==true)&&(c==false))
+            else if((B==true)&&(v==true)&&(C==true)&&(c==true))
                 {
                 A(); if(C==false){P();} else{Q();} G(); Alert("Sell:","o:",o,"|",C,":",c);
                 }
@@ -716,11 +703,11 @@ void OnBar()
         if(LL[o-(y+1)]<Discount[o-(y+1)])
             {
             h=o;
-            if((B==true)&&(v==true)&&(c==true))
+            if((B==true)&&(v==true)&&(C==false)&&(c==false))
                 {
                 A(); if(C==false){P();} else{Q();} Alert("Sell:","o:",o,"|",C,":",c);
                 }
-            else if((A==true)&&(u==true)&&(c==false))
+            else if((A==true)&&(u==true)&&(C==true)&&(c==true))
                 {
                 B(); if(C==false){Q();} else{P();} G(); Alert("Buy:","o:",o,"|",C,":",c);
                 }
@@ -816,15 +803,15 @@ void OnTrack()
         int js=s; j=js; Normalize(); Unify();
         if((Suply<=price)||(iSuply<=price)||(iSuply<=iH))
             {
-            int i=s; I=iW; j=max; Z=j; iZ=i; iC=C; T++;
-            if((iw!=0)&&(jC==true)) h=I;
+            int i=s; I=iW; j=max; Z=j; iZ=i; T++; //iC=C;
+            //if((iw!=0)&&(jC==true)) h=I;
             if(iStdDev>50){S++; iz=i; iI=iw; j=i; H();}
             else if(iATR<50){S++; iO=i; io=i; j=i; H();} else{j=i; H(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} S++;}
             }
         if((Demand>=price)||(iDemand>=price)||(iDemand>=iL))
             {
-            int i=s; I=iZ; j=max; W=j; iW=i; jC=C; T++;
-            if((iz!=0)&&(iC==true)) h=I;
+            int i=s; I=iZ; j=max; W=j; iW=i; T++; //jC=C;
+            //if((iz!=0)&&(iC==true)) h=I;
             if(iStdDev>50){S++; iw=i; iI=iz; j=i; L();}
             else if(iATR<50){S++; iO=i; io=i; j=i; L();} else{j=i; L(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} S++;}
             }
@@ -853,20 +840,16 @@ void OnStand()
         int js=s; j=js; ir=0; ij=0; Normalize(); Unify();
         if((Suply<=price)||(iSuply<=price)||(iSuply<=iH))
             {
-            if((iZ!=iW)&&(J!=iZ)&&(U==V)) U=!V;
-            int i=s; I=iW; j=min+1; Z=j; iZ=i; iC=C; T--;
-            if((iZ==iW)&&(iZ==2)&&(U==V)) U=!V;
-            if((iw!=0)&&(jC==true)) h=I;
+            int i=s; I=iW; j=min+1; Z=j; iZ=i; T--; //iC=C;
+            //if((iw!=0)&&(jC==true)) h=I;
             if((X!=Y)&&(iz==0)&&(iStdDev>50)){ij=i; iz=i; iI=iw; j=i; H(); if(ir==0){Y--;}}
             else if((X!=Y)&&(iO==0)&&(iATR<50)){iO=i; ir=i; j=i; H(); if(ij==0){Y--;}}
             else if(X==Y){j=i; H(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} Y--; X--;}
             }
         else if((Demand>=price)||(iDemand>=price)||(iDemand>=iL))
             {
-            if((iW!=iZ)&&(J!=iW)&&(U==V)) U=!V;
-            int i=s; I=iZ; j=min+1; W=j; iW=i; jC=C; T--;
-            if((iW==iZ)&&(iW==2)&&(U==V)) U=!V;
-            if((iz!=0)&&(iC==true)) h=I;
+            int i=s; I=iZ; j=min+1; W=j; iW=i; T--; //jC=C;
+            //if((iz!=0)&&(iC==true)) h=I;
             if((X!=Y)&&(iw==0)&&(iStdDev>50)){ij=i; iw=i; iI=iz; j=i; L(); if(ir==0){Y--;}}
             else if((X!=Y)&&(iO==0)&&(iATR<50)){iO=i; io=i; ir=0; j=i; L(); if(ij==0){Y--;}}
             else if(X==Y){j=i; L(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} Y--; X--;}
@@ -945,23 +928,23 @@ void OnTick()
             h=iz;
             if((u==true)&&(A==true)&&(C==true)&&(c==true))
                 {
-                B(); P(); Alert("Buy:","h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
+                B(); if(C==true){P();} else{Q();} Alert("Buy:","h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                 }
             else if((v==true)&&(B==true)&&(C==false)&&(c==false))
                 {
-                A(); P(); G(); Alert("Sell:","h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
+                A(); if(C==false){P();} else{Q();} G(); Alert("Sell:","h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                 }
             }
-        else if((iO>=h)&&(iO!=2)&&(((iZ!=2)&&((iZ==iO)||(iZ==iO+h)||((iZ==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(k[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
+        else if((iZ>=h)&&(iO!=2)&&(((iZ!=2)&&((iZ==iO)||(iZ==iO+h)||((iZ==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(k[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
             {
             h=iO;
             if((B==true)&&(v==true)&&(C==true)&&(c==true))
                 {
-                A(); Q(); G(); Alert("Sell:","h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
+                A(); if(C==true){Q();} else{P();} G(); Alert("Sell:","h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                 }
             if((A==true)&&(u==true)&&(C==false)&&(c==false))
                 {
-                B(); Q(); Alert("Buy:","h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
+                B(); if(C==false){Q();} else{P();} Alert("Buy:","h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                 }
             }
         if((iw>=h)&&(iw!=2)&&(((iW!=2)&&((iW==iw)||(iW==iw+h)||((iW==iw+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iw)||(I==iw+h)||((I==iw+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(l[w-(y+1)]==false)&&(OnHold(w,"sTrend","tTrend")))
@@ -969,31 +952,28 @@ void OnTick()
             h=iw;
             if((v==true)&&(B==true)&&(C==true)&&(c==true))
                 {
-                A(); Q(); Alert("Sell:","h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
+                A(); if(C==true){Q();} else{P();} Alert("Sell:","h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                 }
             else if((u==true)&&(A==true)&&(C==false)&&(c==false))
                 {
-                B(); Q(); G(); Alert("Buy:","h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
+                
+                B(); if(C==false){Q();} else{P();} G(); Alert("Buy:","h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                 }
             }
-        else if((iO>=h)&&(iO!=2)&&(((iW!=2)&&((iW==iO)||(iW==iO+h)||((iW==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(l[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
+        else if((iW>=h)&&(iO!=2)&&(((iW!=2)&&((iW==iO)||(iW==iO+h)||((iW==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(l[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
             {
             h=iO;
             if((A==true)&&(u==true)&&(C==true)&&(c==true))
                 {
-                B(); P(); G(); Alert("Buy:","h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
+                B(); if(C==true){P();} else{Q();} G(); Alert("Buy:","h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                 }
             else if((B==true)&&(v==true)&&(C==false)&&(c==false))
                 {
-                A(); P(); Alert("Sell:","h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
+                A(); if(C==false){P();} else{Q();} Alert("Sell:","h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                 }
             }
         }
     Comment("    ^",iZ,":",Z,"|",iz,":",z,"=",k[Z-(y+1)],"|",k[z-(y+1)],
     "\n Lim",iO,":",O,"^",k[O-(y+1)],"_",l[O-(y+1)],".",io,":",o,"^",k[o-(y+1)],"_",l[o-(y+1)],"=",h,".",C,":",c,
-    "\n    _",iW,":",W,"|",iw,":",w,"=",l[W-(y+1)],"|",l[w-(y+1)],
-    "\n Err:",ERROR);
+    "\n    _",iW,":",W,"|",iw,":",w,"=",l[W-(y+1)],"|",l[w-(y+1)]);
     }//U+1F48E-💎 Natalia Tanyatia
-/*
-
-*/
