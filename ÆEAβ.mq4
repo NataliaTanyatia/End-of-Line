@@ -935,7 +935,7 @@ void OnTick()
                 A(); if(C==false){P();} else{Q();} G(); Alert("Sell:","h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                 }
             }
-        else if((iZ>=h)&&(iO!=2)&&(((iZ!=2)&&((iZ==iO)||(iZ==iO+h)||((iZ==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(k[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
+        else if((iO>=h)&&(iO!=2)&&(((iZ!=2)&&((iZ==iO)||(iZ==iO+h)||((iZ==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(k[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
             {
             h=iO;
             if((B==true)&&(v==true)&&(C==true)&&(c==true))
@@ -960,7 +960,7 @@ void OnTick()
                 B(); if(C==false){Q();} else{P();} G(); Alert("Buy:","h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                 }
             }
-        else if((iW>=h)&&(iO!=2)&&(((iW!=2)&&((iW==iO)||(iW==iO+h)||((iW==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(l[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
+        else if((iO>=h)&&(iO!=2)&&(((iW!=2)&&((iW==iO)||(iW==iO+h)||((iW==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange")))))||((I!=2)&&((I==iO)||(I==iO+h)||((I==iO+o)&&(l[o-(y+1)]==false)&&(OnHold(o,"sRange","tRange"))))))&&(l[O-(y+1)]==false)&&(OnHold(O,"sRange","tRange")))
             {
             h=iO;
             if((A==true)&&(u==true)&&(C==true)&&(c==true))
