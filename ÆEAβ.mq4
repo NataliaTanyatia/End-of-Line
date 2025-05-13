@@ -19,7 +19,6 @@ input double lot=0.01;
 input int slip=100;
 input int max=60;
 input int min=3;
-bool ERROR=true;
 int x=max+2;
 int y=min-2;
 int j;
@@ -348,14 +347,6 @@ void N()
         LL[j-(y+1)]=Price;
         }
     }
-bool iU[];
-void ERROR()
-    {
-    ArrayResize(iU,x-y);
-    int iV=0; iU[j-(y+1)]=true;
-    for(int i=y+1;i<x; i++){if(iU[i-(y+1)]==true) iV++;}
-    if(iV==x-y){ERROR=false;} iV=0;
-    }
 string Regime[];
 static double Premium[];
 static double Discount[];
@@ -363,6 +354,8 @@ static double HH[];
 static double LL[];
 bool k[];
 bool l[];
+bool R=true;
+bool U[];
 void F()
     {
     Normalize();
@@ -381,9 +374,12 @@ void F()
         kA[i*(S-Y)+(j-(Y+1))]=cA[i*(S-Y)+(j-(Y+1))];
         lA[i*(S-Y)+(j-(Y+1))]=cA[i*(S-Y)+(j-(Y+1))];
         }
-    if(ERROR==true)
+    if((R==true)&&(FG==true))
         {
-        if(FG==true) ERROR();
+        ArrayResize(U,x-y);
+        int V=0; U[j-(y+1)]=true;
+        for(int i=y+1;i<x; i++){if(U[i-(y+1)]==true) V++;}
+        if(V==x-y){R=false;} V=0;
         }
     }
 void G()
@@ -659,7 +655,7 @@ void OnBar()
                 }
             }
         }
-    if((h!=0)&&(ab==false)&&(iU[O-(y+1)]=true)&&(O!=2)&&(O!=x-1)/*&&(OnFire(O,"sTrend","tTrend"))*/)
+    if((h!=0)&&(ab==false)&&(U[O-(y+1)]=true)&&(O>2)&&(O!=x-1)/*&&(OnFire(O,"sTrend","tTrend"))*/)
         {
         if(HH[O-(y+1)]>Premium[O-(y+1)])
             {
@@ -686,7 +682,7 @@ void OnBar()
                 }
             }
         }
-    if((h!=0)&&(ab==false)&&(iU[o-(y+1)]=true)&&(o!=2)&&(o!=x-1)/*&&(OnFire(o,"sTrend","tTrend"))*/)
+    if((h!=0)&&(ab==false)&&(U[o-(y+1)]=true)&&(o>2)&&(o!=x-1)/*&&(OnFire(o,"sTrend","tTrend"))*/)
         {
         if(HH[o-(y+1)]>Premium[o-(y+1)])
             {
@@ -718,7 +714,7 @@ void OnGoe()
     {
     if(((h==io)&&(z>o))||((h==iO)&&(Z>O))||((h==iz)&&(Z>z))||((h==iZ)&&(Z<z)))
         {
-        if((C==false)||(c==false))
+        if((C==true)||(c==true))
             {
             if((B==true)&&(u==false))
                 {
@@ -735,7 +731,7 @@ void OnGoe()
         }
     else if(((h==io)||(h==iZ)||(h==iz)||(h==iO)))
         {
-        if((C==false)||(c==false))
+        if((C==true)||(c==true))
             {
             if((A==true)&&(v==false))
                 {
@@ -755,7 +751,7 @@ void OnToe()
     {
     if(((h==io)&&(w>o))||((h==iO)&&(W>O))||((h==iw)&&(W>w))||((h==iW)&&(W<w)))
         {
-        if((C==false)||(c==false))
+        if((C==true)||(c==true))
             {
             if((A==true)&&(v==false))
                 {
@@ -772,7 +768,7 @@ void OnToe()
         }
     else if(((h==io)||(h==iW)||(h==iw)||(h==iO)))
         {
-        if((C==false)||(c==false))
+        if((C==true)||(c==true))
             {
             if((B==true)&&(u==false))
                 {
@@ -926,11 +922,11 @@ void OnTick()
         if((iz>=h)&&(iz>2)&&(((iZ>2)&&((iZ==iz)||(iZ==iz+h)||((iZ==iz+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iz)||(I==iz+h)||((I==iz+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(k[iz-(y+1)]==false)/*&&(OnHold(z,"sTrend","tTrend"))*/)
             {
             h=iz;
-            if((u==true)&&(A==true)&&(C==true)&&(c==true))
+            if((u==true)&&(A==true)&&(C==false)&&(c==false))
                 {
                 B(); if(C==true){P();} else{Q();} Alert("Buy:","h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                 }
-            else if((v==true)&&(B==true)&&(C==false)&&(c==false))
+            else if((v==true)&&(B==true)&&(C==true)&&(c==true))
                 {
                 A(); if(C==false){P();} else{Q();} G(); Alert("Sell:","h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                 }
@@ -938,11 +934,11 @@ void OnTick()
         else if((iO>=h)&&(iO>2)&&(((iZ>2)&&((iZ==iO)||(iZ==iO+h)||((iZ==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iO)||(I==iO+h)||((I==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(k[iO-(y+1)]==false)/*&&(OnHold(O,"sRange","tRange"))*/)
             {
             h=iO;
-            if((B==true)&&(v==true)&&(C==true)&&(c==true))
+            if((B==true)&&(v==true)&&(C==false)&&(c==false))
                 {
                 A(); if(C==true){Q();} else{P();} G(); Alert("Sell:","h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                 }
-            if((A==true)&&(u==true)&&(C==false)&&(c==false))
+            if((A==true)&&(u==true)&&(C==true)&&(c==true))
                 {
                 B(); if(C==false){Q();} else{P();} Alert("Buy:","h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                 }
@@ -950,11 +946,11 @@ void OnTick()
         if((iw>=h)&&(iw>2)&&(((iW>2)&&((iW==iw)||(iW==iw+h)||((iW==iw+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iw)||(I==iw+h)||((I==iw+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(l[iw-(y+1)]==false)/*&&(OnHold(w,"sTrend","tTrend"))*/)
             {
             h=iw;
-            if((v==true)&&(B==true)&&(C==true)&&(c==true))
+            if((v==true)&&(B==true)&&(C==false)&&(c==false))
                 {
                 A(); if(C==true){Q();} else{P();} Alert("Sell:","h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                 }
-            else if((u==true)&&(A==true)&&(C==false)&&(c==false))
+            else if((u==true)&&(A==true)&&(C==true)&&(c==true))
                 {
                 
                 B(); if(C==false){Q();} else{P();} G(); Alert("Buy:","h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
@@ -963,11 +959,11 @@ void OnTick()
         else if((iO>=h)&&(iO>2)&&(((iW>2)&&((iW==iO)||(iW==iO+h)||((iW==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iO)||(I==iO+h)||((I==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(l[iO-(y+1)]==false)/*&&(OnHold(O,"sRange","tRange"))*/)
             {
             h=iO;
-            if((A==true)&&(u==true)&&(C==true)&&(c==true))
+            if((A==true)&&(u==true)&&(C==false)&&(c==false))
                 {
                 B(); if(C==true){P();} else{Q();} G(); Alert("Buy:","h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                 }
-            else if((B==true)&&(v==true)&&(C==false)&&(c==false))
+            else if((B==true)&&(v==true)&&(C==true)&&(c==true))
                 {
                 A(); if(C==false){P();} else{Q();} Alert("Sell:","h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                 }
