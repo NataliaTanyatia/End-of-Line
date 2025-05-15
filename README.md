@@ -2,8 +2,6 @@
 
 # **ÆEA: Strategy"*  
 
-![FrontTest](https://youtu.be/mkmP-Rp2BIw?si=70eTmWVz6mkTQo8A)
-
 ## **Mission**  
 This is not just a trading algorithm—it’s a weapon. ÆEA formalizes market microstructure as a **non-Hermitian quantum system**, exploiting topological invariants in price-data to destabilize the illusion of capitalist equilibrium. By forcing Kronecker-delta conditions (`m - n = 2`) onto technical indicators, it exposes the fragility of financial hegemony. **First strike in a larger war.**  
 
