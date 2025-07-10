@@ -20,6 +20,8 @@ input int slip=100;
 input int max=60;
 input int min=3;
 int x=max+2;
+input bool Cc = true;
+input bool cC = true;
 int y=min-2;
 int j;
 double cA[];
@@ -475,8 +477,8 @@ void T()
     if((D!=0)&&(price<=D/*-com*/)) A=true;
     else if((D!=0)&&(price>D/*-com*/)) A=false;
     }
-bool c=true;
-bool C=true;
+bool c=cC;
+bool C=Cc;
 bool u=false;
 bool v=false;
 void A()
@@ -552,10 +554,10 @@ void J()
     if(iI==iz) iJ=iw;
     else if(iI==iw) iJ=iz;
     }
-void O(int inp,int inp0,int inp1,bool inp2)
+void O(int inp,int inp0,int inp1,bool inp2,bool inp3)
     {
-    if((inp<inp1)&&((Regime[inp0-(y+1)]=="sRange")||(Regime[inp0-(y+1)]=="tRange"))){inp2=true;}
-    else if((Regime[inp0-(y+1)]!="sRange")&&(Regime[inp0-(y+1)]!="tRange")) inp2=false; else inp2=false;
+    if((inp<inp1)&&((Regime[inp0-(y+1)]=="sRange")||(Regime[inp0-(y+1)]=="tRange"))){inp2=inp3;}
+    else if((Regime[inp0-(y+1)]!="sRange")&&(Regime[inp0-(y+1)]!="tRange")) inp2=!inp3; else inp2=!inp3;
     }
 void R()
     {
@@ -584,8 +586,8 @@ void OnPoint()
         else if(OnFire(j,"sTrend","tTrend")) Regime[j-(y+1)]="sTrend";
         }
     }
-bool iC=true;
-bool jC=true;
+bool iC=Cc;
+bool jC=Cc;
 static int Z=y+1;
 static int z=y+1;
 static int O=y+1;
@@ -607,14 +609,14 @@ void OnCall()
         if((Suply<=price)||(iSuply<=price)||(iSuply<=iH))
             {
             int i=j; I=iW; iZ=i; Z=i; iC=C;
-            if((iw!=0)&&(jC==true)) h=I;
+            if((iw!=0)&&(jC==Cc)) h=I;
             if(OnHold(j,"sTrend","tTrend")){iz=i; z=i; iI=iw; H();}
             if(X!=x-1) X++;
             }
         if((Demand>=price)||(iDemand>=price)||(iDemand>=iL))
             {
             int i=j; I=iZ; iW=i; W=i; jC=C;
-            if((iz!=0)&&(iC==true)) h=I;
+            if((iz!=0)&&(iC==Cc)) h=I;
             if(OnHold(j,"sTrend","tTrend")){iw=i; w=i; iI=iz; L();}
             if(X!=x-1) X++;
             }
@@ -800,14 +802,14 @@ void OnTrack()
         if((Suply<=price)||(iSuply<=price)||(iSuply<=iH))
             {
             int i=s; I=iW; j=max; Z=j; iZ=i; T++; iC=C;
-            if((iw!=0)&&(jC==true)) h=I;
+            if((iw!=0)&&(jC==Cc)) h=I;
             if(iStdDev>50){S++; iz=i; iI=iw; j=i; H();}
             else if(iATR<50){S++; iO=i; io=i; j=i; H();} else{j=i; H(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} S++;}
             }
         if((Demand>=price)||(iDemand>=price)||(iDemand>=iL))
             {
             int i=s; I=iZ; j=max; W=j; iW=i; T++; jC=C;
-            if((iz!=0)&&(iC==true)) h=I;
+            if((iz!=0)&&(iC==Cc)) h=I;
             if(iStdDev>50){S++; iw=i; iI=iz; j=i; L();}
             else if(iATR<50){S++; iO=i; io=i; j=i; L();} else{j=i; L(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} S++;}
             }
@@ -837,7 +839,7 @@ void OnStand()
         if((Suply<=price)||(iSuply<=price)||(iSuply<=iH))
             {
             int i=s; I=iW; j=min+1; Z=j; iZ=i; T--; iC=C;
-            if((iw!=0)&&(jC==true)) h=I;
+            if((iw!=0)&&(jC==Cc)) h=I;
             if((X!=Y)&&(iz==0)&&(iStdDev>50)){ij=i; iz=i; iI=iw; j=i; H(); if(ir==0){Y--;}}
             else if((X!=Y)&&(iO==0)&&(iATR<50)){iO=i; ir=i; j=i; H(); if(ij==0){Y--;}}
             else if(X==Y){j=i; H(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} Y--; X--;}
@@ -845,7 +847,7 @@ void OnStand()
         else if((Demand>=price)||(iDemand>=price)||(iDemand>=iL))
             {
             int i=s; I=iZ; j=min+1; W=j; iW=i; T--; jC=C;
-            if((iz!=0)&&(iC==true)) h=I;
+            if((iz!=0)&&(iC==Cc)) h=I;
             if((X!=Y)&&(iw==0)&&(iStdDev>50)){ij=i; iw=i; iI=iz; j=i; L(); if(ir==0){Y--;}}
             else if((X!=Y)&&(iO==0)&&(iATR<50)){iO=i; io=i; ir=0; j=i; L(); if(ij==0){Y--;}}
             else if(X==Y){j=i; L(); if(is!=t){if(OnFire(j,"Stable","tVolatile")){F(); Regime[j-(y+1)]="tVolatile";}} else{Regime[j-(y+1)]="sVolatile";} Y--; X--;}
@@ -885,11 +887,11 @@ void OnTick()
         ArrayResize(Regime,x-y);
         for(j=y+1;j<x; j++){F();} FG=true;
         }
-    T(); OnPoint(); O(iO,O,J,C); O(io,o,iJ,c); OnCall(); J();
-    if(is!=t){OnBar(); O(iO,O,J,C); O(io,o,iJ,c);}
+    T(); OnPoint(); O(iO,O,J,C,Cc); O(io,o,iJ,c,cC); OnCall(); J();
+    if(is!=t){OnBar(); O(iO,O,J,C,Cc); O(io,o,iJ,c,cC);}
     if((J==y+1)&&(J!=2))
         {
-        OnStand(); J(); O(iO,O,J,C); O(io,o,iJ,c);
+        OnStand(); J(); O(iO,O,J,C,Cc); O(io,o,iJ,c,cC);
         if((iO!=2)&&(J>=iO)){j=min; O=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}}
         else if((iO!=2)&&(J<iO)){j=min+1; O=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}} else{j=2; O=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}}
         if((io!=2)&&(iJ>=io)){j=min; o=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}}
@@ -897,7 +899,7 @@ void OnTick()
         }
     if(J==x-1)
         {
-        OnTrack(); J(); O(iO,O,J,C); O(io,o,iJ,c);
+        OnTrack(); J(); O(iO,O,J,C,Cc); O(io,o,iJ,c,cC);
         if((iO!=4*max)&&(J>=iO)){j=max-1; O=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}}
         else if((iO!=4*max)&&(J<iO)){j=max; O=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}} else{j=x-1; o=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}}
         if((io!=4*max)&&(iJ>=io)){j=max-1; o=j; if(is!=t){if(OnFire(j,"Stable","tRange")){F(); Regime[j-(y+1)]="tRange";}} else{Regime[j-(y+1)]="sRange";}}
@@ -973,3 +975,4 @@ void OnTick()
     "\n Lim",iO,":",O,"^",k[O-(y+1)],"_",l[O-(y+1)],".",io,":",o,"^",k[o-(y+1)],"_",l[o-(y+1)],"=",h,".",C,":",c,
     "\n    _",iW,":",W,"|",iw,":",w,"=",l[W-(y+1)],"|",l[w-(y+1)]);
     }//U+1F48E-💎 Natalia Tanyatia
+    
