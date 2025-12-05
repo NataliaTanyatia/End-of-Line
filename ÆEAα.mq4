@@ -28,7 +28,6 @@ int y=min-2;
 int j;
 double signal = 0;
 double spread = Ask - Bid;
-double delta = spread + com;
 double cA[];
 double cADX;
 double mSO;
@@ -1123,7 +1122,7 @@ void OnTick()
         }
     if(signal!=0)
         {
-        if(price>=signal+delta)
+        if((price>=signal+spread)||(price>=signal+com))
             {
             Alert("Buy: ",price);
             if((A==true)&&(u==true))
@@ -1132,7 +1131,7 @@ void OnTick()
                 }
             signal = 0;
             }
-        else if(price<=signal-delta)
+        else if((price<=signal-spread)||(price<=signal-com))
             {
             Alert("Sell: ",price);
                 if((B==true)&&(v==true))
