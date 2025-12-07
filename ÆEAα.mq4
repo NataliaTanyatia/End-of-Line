@@ -628,6 +628,8 @@ void OnCall()
     }
 void OnBar()
     {
+    //Open
+    open=iOpen(Symbol(),0,1);
     for(j=y+1;j<x; j++)
         {
         Unify(); Normalize();
@@ -773,6 +775,43 @@ void OnBar()
                     signal = price; G(); Alert("Sig.",price,"o:",o,"|",C,":",c);
                     }
                 }
+            }
+        }
+    Stock=iBands(NULL,0,y,2,0,PRICE_CLOSE,MODE_UPPER,0);
+    Sale=iBands(NULL,0,y,2,0,PRICE_CLOSE,MODE_LOWER,0);
+    if(signal!=0)
+        {
+        if(/*(price>=signal+spread)||*/(price>=signal+com))
+            {
+            Alert("Bought: ",price);
+            if((A==true)&&(u==true))
+                {
+                B(); if(C==true){P();} else{Q();}
+                }
+            }
+        else if(/*(price<=signal-spread)||*/(price<=signal-com))
+            {
+            Alert("Sold: ",price);
+            if((B==true)&&(v==true))
+                {
+                A(); if(C==false){P();} else{Q();}
+                }
+            }
+        if((Price>=signal)&&((Price>=HH[min-(y+1)])||((Price>=LL[3-(y+1)])&&((open>=Sale)||(Price>=Sale)))))
+            {
+            Alert("Buy: ",price);
+            if((A==true)&&(u==true))
+                {
+                B(); if(C==true){P();} else{Q();}
+                } signal = 0;
+            }
+        else if((Price<=signal)&&((Price<=LL[min-(y+1)])||((Price<=HH[3-(y+1)])&&((open<=Stock)||(Price<=Stock)))))
+            {
+            Alert("Sell: ",price);
+            if((B==true)&&(v==true))
+                {
+                A(); if(C==false){P();} else{Q();}
+                } signal = 0; 
             }
         }
     }
@@ -962,13 +1001,17 @@ void OnStand()
 bool FG=false;
 double price;
 double Price;
+double open;
 double iH;
 double iL;
+double Sale;
+double  Stock;
 static datetime t;
 void OnTick()
     {
     datetime is=iTime(_Symbol,0,0);
     price=SymbolInfoDouble(_Symbol,SYMBOL_BID);
+    //Close
     Price=iClose(Symbol(),0,1);
     iH=iHigh(Symbol(),0,1);
     iL=iLow(Symbol(),0,1);
@@ -1118,27 +1161,6 @@ void OnTick()
                     signal = price; Alert("Sign.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                     }
                 }
-            }
-        }
-    if(signal!=0)
-        {
-        if((price>=signal+spread)||(price>=signal+com))
-            {
-            Alert("Buy: ",price);
-            if((A==true)&&(u==true))
-                {
-                B(); if(C==true){P();} else{Q();}
-                }
-            signal = 0;
-            }
-        else if((price<=signal-spread)||(price<=signal-com))
-            {
-            Alert("Sell: ",price);
-                if((B==true)&&(v==true))
-                    {
-                    A(); if(C==false){P();} else{Q();}
-                    }
-            signal = 0;
             }
         }
     Comment("    ^",iZ,":",Z,"|",iz,":",z,"=",k[Z-(y+1)],"|",k[z-(y+1)],
