@@ -626,10 +626,10 @@ void OnCall()
             }
         } X=y;
     }
+static int toll = 0;
+string tally = "";
 void OnBar()
     {
-    //Open
-    open=iOpen(Symbol(),0,1);
     for(j=y+1;j<x; j++)
         {
         Unify(); Normalize();
@@ -672,11 +672,11 @@ void OnBar()
                 h=O;
                 if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sig.",price,price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price,price,"O:",O,"|",C,":",c);
                     }
                 else if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sign.",price,price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price,price,"O:",O,"|",C,":",c);
                     }
                 }
             if(LL[O-(y+1)]<Discount[O-(y+1)])
@@ -684,11 +684,11 @@ void OnBar()
                 h=O;
                 if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sign.",price,price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price,price,"O:",O,"|",C,":",c);
                     }
                 else if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sig.",price,price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price,price,"O:",O,"|",C,":",c);
                     }
                 }
             }
@@ -699,11 +699,11 @@ void OnBar()
                 h=o;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sig.",price,price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price,price,"o:",o,"|",C,":",c);
                     }
                 else if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sign.",price,price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price,price,"o:",o,"|",C,":",c);
                     }
                 }
             if(LL[o-(y+1)]<Discount[o-(y+1)])
@@ -711,11 +711,11 @@ void OnBar()
                 h=o;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sign.",price,price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price,price,"o:",o,"|",C,":",c);
                     }
                 else if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sig.",price,price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price,price,"o:",o,"|",C,":",c);
                     }
                 }
             }
@@ -729,11 +729,11 @@ void OnBar()
                 h=O;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sig.",price,price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price,price,"O:",O,"|",C,":",c);
                     }
                 else if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sign.",price,price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price,price,"O:",O,"|",C,":",c);
                     }
                 }
             if(LL[O-(y+1)]<Discount[O-(y+1)])
@@ -741,11 +741,11 @@ void OnBar()
                 h=O;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sign.",price,price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price,price,"O:",O,"|",C,":",c);
                     }
                 else if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sig.",price,"O:",O,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price,"O:",O,"|",C,":",c);
                     }
                 }
             }
@@ -756,11 +756,11 @@ void OnBar()
                 h=o;
                 if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sig.",price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price,"o:",o,"|",C,":",c);
                     }
                 else if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sign.",price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price,"o:",o,"|",C,":",c);
                     }
                 }
             if(LL[o-(y+1)]<Discount[o-(y+1)])
@@ -768,17 +768,19 @@ void OnBar()
                 h=o;
                 if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sign.",price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price,"o:",o,"|",C,":",c);
                     }
                 else if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sig.",price,"o:",o,"|",C,":",c);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price,"o:",o,"|",C,":",c);
                     }
                 }
             }
         }
     Stock=iBands(NULL,0,y,2,0,PRICE_CLOSE,MODE_UPPER,0);
     Sale=iBands(NULL,0,y,2,0,PRICE_CLOSE,MODE_LOWER,0);
+    iStock=iBands(NULL,0,y,2,0,PRICE_CLOSE,MODE_UPPER,1);
+    iSale=iBands(NULL,0,y,2,0,PRICE_CLOSE,MODE_LOWER,1);
     if(signal!=0)
         {
         if(/*(price>=signal+spread)||*/(price>=signal+com))
@@ -789,7 +791,7 @@ void OnBar()
                 B(); if(C==true){P();} else{Q();}
                 }
             }
-        else if(/*(price<=signal-spread)||*/(price<=signal-com))
+        if(/*(price<=signal-spread)||*/(price<=signal-com))
             {
             Alert("Sold: ",price);
             if((B==true)&&(v==true))
@@ -797,21 +799,31 @@ void OnBar()
                 A(); if(C==false){P();} else{Q();}
                 }
             }
-        if((Price>=signal)&&((Price>=HH[min-(y+1)])||((Price>=LL[3-(y+1)])&&((open>=Sale)||(Price>=Sale)))))
+        if((Price>=signal)&&((Price>=HH[min-(y+1)])||((Price>=LL[3-(y+1)])&&(((open>=Stock)||(Price>=Stock))||((open>=iStock)||(Price>=iStock))))))
             {
             Alert("Buy: ",price);
-            if((A==true)&&(u==true))
-                {
-                B(); if(C==true){P();} else{Q();}
-                } signal = 0;
+            if((toll==0)&&(tally=="Sell")){toll ++;} tally = "Buy";
             }
-        else if((Price<=signal)&&((Price<=LL[min-(y+1)])||((Price<=HH[3-(y+1)])&&((open<=Stock)||(Price<=Stock)))))
+        if((Price<=signal)&&((Price<=LL[min-(y+1)])||((Price<=HH[3-(y+1)])&&(((open<=Sale)||(Price<=Sale))||((open<=iSale)||(Price<=iSale))))))
             {
             Alert("Sell: ",price);
+            if((toll==0)&&(tally=="Buy")){toll ++;} tally = "Sell";
+            }
+        if((toll==1)&&(tally=="Buy"))
+            {
+            if((A==true)&&(u==true))
+                {
+                Alert("Bull");
+                B(); if(C==true){P();} else{Q();}
+                } toll = 0; tally = ""; signal = 0;
+            }
+        if((toll==1)&&(tally=="Sell"))
+            {
+            Alert("Bear");
             if((B==true)&&(v==true))
                 {
                 A(); if(C==false){P();} else{Q();}
-                } signal = 0; 
+                } toll = 0; tally = ""; signal = 0;
             }
         }
     }
@@ -823,22 +835,22 @@ void OnGoe()
             {
             if((C==false)&&(c==false))
                 {
-                signal = price; G(); Alert("Sign.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; Alert("Sig.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         else if(((h==io)||(h==iZ)||(h==iz)||(h==iO)))
             {
             if((C==false)&&(c==false))
                 {
-                signal = price; Alert("Sig.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; G(); Alert("Sign.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         }
@@ -848,22 +860,22 @@ void OnGoe()
             {
             if((C==false)||(c==false))
                 {
-                signal = price; G(); Alert("Sign.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; Alert("Sig.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"|","Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         else if(((h==io)||(h==iZ)||(h==iz)||(h==iO)))
             {
             if((C==false)||(c==false))
                 {
-                signal = price; Alert("Sig.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; G(); Alert("Sign.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"Z:",iZ,"z:",iz,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         }
@@ -876,22 +888,22 @@ void OnToe()
             {
             if((C==false)&&(c==false))
                 {
-                signal = price; G(); Alert("Sig.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; Alert("Sign.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         else if(((h==io)||(h==iW)||(h==iw)||(h==iO)))
             {
             if((C==false)&&(c==false))
                 {
-                signal = price; Alert("Sign.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; G(); Alert("Sig.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         }
@@ -901,22 +913,22 @@ void OnToe()
             {
             if((C==false)||(c==false))
                 {
-                signal = price; G(); Alert("Sig.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; Alert("Sign.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h," W<w","|","W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         else if(((h==io)||(h==iW)||(h==iw)||(h==iO)))
             {
             if((C==false)||(c==false))
                 {
-                signal = price; Alert("Sign.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             else
                 {
-                signal = price; G(); Alert("Sig.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
+                signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h,"W:",iW,"w:",iw,"O:",iO,"o:",io,"|",C,":",c);
                 }
             }
         }
@@ -1005,7 +1017,9 @@ double open;
 double iH;
 double iL;
 double Sale;
-double  Stock;
+double iSale;
+double Stock;
+double iStock;
 static datetime t;
 void OnTick()
     {
@@ -1013,6 +1027,8 @@ void OnTick()
     price=SymbolInfoDouble(_Symbol,SYMBOL_BID);
     //Close
     Price=iClose(Symbol(),0,1);
+    //Open
+    open=iOpen(Symbol(),0,1);
     iH=iHigh(Symbol(),0,1);
     iL=iLow(Symbol(),0,1);
     if(FG==false)
@@ -1067,11 +1083,11 @@ void OnTick()
                 h=iz;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sig.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                     }
                 else if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sign.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                     }
                 }
             else if((iO>=h)&&(iO>2)&&(((iZ>2)&&((iZ==iO)||(iZ==iO+h)||((iZ==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iO)||(I==iO+h)||((I==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(k[iO-(y+1)]==false)/*&&(OnHold(O,"sRange","tRange"))*/)
@@ -1079,11 +1095,11 @@ void OnTick()
                 h=iO;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sign.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                     }
                 if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sig.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                     }
                 }
             if((iw>=h)&&(iw>2)&&(((iW>2)&&((iW==iw)||(iW==iw+h)||((iW==iw+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iw)||(I==iw+h)||((I==iw+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(l[iw-(y+1)]==false)/*&&(OnHold(w,"sTrend","tTrend"))*/)
@@ -1091,11 +1107,11 @@ void OnTick()
                 h=iw;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sign.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                     }
                 else if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sig.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                     }
                 }
             else if((iO>=h)&&(iO>2)&&(((iW>2)&&((iW==iO)||(iW==iO+h)||((iW==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iO)||(I==iO+h)||((I==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(l[iO-(y+1)]==false)/*&&(OnHold(O,"sRange","tRange"))*/)
@@ -1103,11 +1119,11 @@ void OnTick()
                 h=iO;
                 if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sig.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                     }
                 else if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sign.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                     }
                 }
             }
@@ -1118,11 +1134,11 @@ void OnTick()
                 h=iz;
                 if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sig.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                     }
                 else if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sign.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"iZ:",iZ,"I:",I,"|=iz:",iz,"|",C);
                     }
                 }
             else if((iO>=h)&&(iO>2)&&(((iZ>2)&&((iZ==iO)||(iZ==iO+h)||((iZ==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iO)||(I==iO+h)||((I==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(k[iO-(y+1)]==false)/*&&(OnHold(O,"sRange","tRange"))*/)
@@ -1130,11 +1146,11 @@ void OnTick()
                 h=iO;
                 if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sign.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sign.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                     }
                 if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sig.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sig.",price," h:",h,"o:",o,"iZ:",iZ,"I:",I,"|=iO:",iO,"|",C);
                     }
                 }
             if((iw>=h)&&(iw>2)&&(((iW>2)&&((iW==iw)||(iW==iw+h)||((iW==iw+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iw)||(I==iw+h)||((I==iw+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(l[iw-(y+1)]==false)/*&&(OnHold(w,"sTrend","tTrend"))*/)
@@ -1142,11 +1158,11 @@ void OnTick()
                 h=iw;
                 if((C==true)&&(c==true))
                     {
-                    signal = price; Alert("Sign.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                     }
                 else if((C==false)&&(c==false))
                     {
-                    signal = price; G(); Alert("Sig.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h,"iW:",iW,"I:",I,"|=iw:",iw,"|",C);
                     }
                 }
             else if((iO>=h)&&(iO>2)&&(((iW>2)&&((iW==iO)||(iW==iO+h)||((iW==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/)))||((I>2)&&((I==iO)||(I==iO+h)||((I==iO+io)&&(l[io-(y+1)]==false)/*&&(OnHold(o,"sRange","tRange"))*/))))&&(l[iO-(y+1)]==false)/*&&(OnHold(O,"sRange","tRange"))*/)
@@ -1154,11 +1170,11 @@ void OnTick()
                 h=iO; 
                 if((C==true)&&(c==true))
                     {
-                    signal = price; G(); Alert("Sig.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; G(); Alert("Sig.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                     }
                 else if((C==false)&&(c==false))
                     {
-                    signal = price; Alert("Sign.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
+                    signal = price; toll = 0; tally = ""; Alert("Sign.",price," h:",h,"o:",o,"iW:",iW,"I:",I,"|=iO:",iO,"|",C);
                     }
                 }
             }
